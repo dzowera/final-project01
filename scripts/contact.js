@@ -1,12 +1,12 @@
-const contactForm = document.getElementById("contact-form");
-const confirmation = document.getElementById("confirmation");
+export function initContactForm() {
+  const contactForm = document.getElementById("contact-form");
+  const confirmation = document.getElementById("confirmation");
 
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+  if (!contactForm) return;
 
-  // Show confirmation message
-  confirmation.textContent = "✅ Your message has been received. Thank you for reaching out!";
-  
-  // Clear form fields
-  contactForm.reset();
-});
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    confirmation.textContent = "✅ Your message has been received. Thank you!";
+    contactForm.reset();
+  });
+}

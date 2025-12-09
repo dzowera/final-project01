@@ -91,6 +91,16 @@ body {
   margin-bottom: 30px;
 }
 
+/* -----------------Animimation---------------- */
+.hero-content h1 {
+  animation: fadeInDown 1.5s ease;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .btn {
   background: #10B981; /* emerald green */
   color: white;
@@ -161,6 +171,53 @@ body {
 }
 
 /* ----------------------------------------------------------------------------- */
+/* News Section */
+.news {
+  padding: 60px 20px;
+  background: #f3f4f6;
+}
+
+.news-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.news-container h2 {
+  color: #1E3A8A;
+  margin-bottom: 20px;
+}
+
+#news-list {
+  list-style: none;
+  padding: 0;
+}
+
+#news-list li {
+  margin-bottom: 15px;
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  animation: fadeInUp 0.8s ease;
+}
+
+#news-list a {
+  text-decoration: none;
+  color: #10B981;
+  font-weight: bold;
+}
+
+#news-list a:hover {
+  text-decoration: underline;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------------------------------------------------------------- */
 
 /* About Page */
 .about {
