@@ -1,3 +1,13 @@
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
+
+  // Animate hamburger lines
+  hamburger.classList.toggle("open");
+});
+
 const form = document.getElementById("converter-form");
 const resultDiv = document.getElementById("result");
 let chart; // global chart reference
