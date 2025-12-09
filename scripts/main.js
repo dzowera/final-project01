@@ -29,6 +29,16 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
+// Mobile navigation toggle
+const hamburger = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
+
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+}
+
 // Initialize the news section (fetches headlines from NewsData.io API)
 loadNews();
 
