@@ -1,1 +1,85 @@
-<h1>Testing the repo</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchange Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">MyProject</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Currency Exchange Tracker</h1>
+      <p>Get real-time conversion rates and visualize currency trends with ease.</p>
+      <a href="about.html" class="btn">Learn More</a>
+    </div>
+  </section>
+
+  <!-- Converter Section -->
+  <section class="converter">
+    <div class="converter-container">
+      <h2>Currency Converter</h2>
+      <form id="converter-form">
+        <input type="number" id="amount" placeholder="Enter amount" required>
+        
+        <select id="from-currency">
+          <option value="USD">USD - US Dollar</option>
+          <option value="MWK">MWK - Malawi Kwacha</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="GBP">GBP - British Pound</option>
+          <option value="ZAR">ZAR - South African Rand</option>
+        </select>
+        
+        <select id="to-currency">
+          <option value="MWK">MWK - Malawi Kwacha</option>
+          <option value="USD">USD - US Dollar</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="GBP">GBP - British Pound</option>
+          <option value="ZAR">ZAR - South African Rand</option>
+        </select>
+        
+        <button type="submit" class="btn">Convert</button>
+      </form>
+      <div id="result"></div>
+    </div>
+  </section>
+
+  <!-- Chart Section -->
+  <section class="chart-section">
+    <div class="chart-container">
+      <h2>Exchange Rate Trends</h2>
+      <canvas id="exchangeChart"></canvas>
+    </div>
+  </section>
+   <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 Currency Exchange Tracker | Built by Innocent Dzowera</p>
+    <div class="footer-links">
+      <a href="https://wa.me/265995877256" target="_blank">WhatsApp</a>
+      <a href="www.linkedin.com/in/innocent-dzowera-a31477274" target="_blank">LinkedIn</a>
+      <a href="https://github.com/dzowera" target="_blank">GitHub</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="scripts/scripts.js"></script>
+</body>
+</html>
