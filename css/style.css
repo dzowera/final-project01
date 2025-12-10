@@ -25,10 +25,21 @@ body {
 }
 
 .nav-links li a {
+  display: inline-block;
+  padding: 8px;
   text-decoration: none;
   color: white;
   font-weight: 500;
+  border-radius: 2px;
+  transition: background-color 0.25s, color 0.25s;
 }
+
+.nav-links li a:hover,
+.nav-links li a:focus-visible {
+  color: #1E3A8A;
+  background-color: white;
+}
+
 
 /* Hamburger Icon */
 .hamburger {
@@ -311,7 +322,7 @@ body {
   color: #FFFFFF;
   font-weight: 600;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 20px;
 }
 .footer-links a:hover {
   text-decoration: underline;

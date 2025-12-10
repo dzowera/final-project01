@@ -15,8 +15,13 @@ export async function convertCurrency(amount, fromCurrency, toCurrency) {
       const eurToTo = data.rates[toCurrency];
       const rate = eurToTo / eurToFrom;
 
+      let usd = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: toCurrency,
+      })
+
       // Return converted amount rounded to 2 decimals
-      return (amount * rate).toFixed(2);
+      return usd.format((amount * rate).toFixed(2));
     } else {
       throw new Error("Conversion failed");
     }
