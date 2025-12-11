@@ -44,3 +44,6 @@ loadNews();
 
 // Initialize the contact form (adds confirmation message after submission)
 initContactForm();
+
+// Restore last selected currencies on page load
+restoreCurrencySelection();
