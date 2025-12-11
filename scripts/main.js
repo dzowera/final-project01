@@ -1,49 +1,44 @@
 // Import modules for different features
-import { convertCurrency } from "./converter.js";   // Handles currency conversion API calls
-import { loadNews } from "./news.js";               // Fetches and displays latest financial news
-import { initContactForm } from "./contact.js";     // Manages contact form submission + confirmation
+import { convertCurrency, restoreCurrencySelection } from "./converter.js";   // added restoreCurrencySelection
+import { loadNews } from "./news.js";
+import { initContactForm } from "./contact.js";
 
-// Grab references to the converter form and result display
+// Grab references (may be null on pages without the converter)
 const form = document.getElementById("converter-form");
 const resultDiv = document.getElementById("result");
 
-// Attach event listener to the converter form
-// This runs whenever the user submits a conversion request
-form.addEventListener("submit", async (e) => {
-  e.preventDefault(); // Prevent page reload on form submission
+// Only wire up converter if form exists on this page
+if (form) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const amount = document.getElementById("amount").value;
+    const fromCurrency = document.getElementById("from-currency").value;
+    const toCurrency = document.getElementById("to-currency").value;
 
-  // Get user input values
-  const amount = document.getElementById("amount").value;
-  const fromCurrency = document.getElementById("from-currency").value;
-  const toCurrency = document.getElementById("to-currency").value;
+    try {
+      const convertedAmount = await convertCurrency(amount, fromCurrency, toCurrency);
+      // resultDiv may be null, so guard it too
+      if (resultDiv) {
+        resultDiv.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+      }
+    } catch {
+      if (resultDiv) resultDiv.textContent = "Error fetching conversion rates.";
+    }
+  });
 
-  try {
-    // Call converter module to fetch conversion rate and calculate result
-    const convertedAmount = await convertCurrency(amount, fromCurrency, toCurrency);
+  // Restore selection only when converter exists
+  restoreCurrencySelection();
+}
 
-    // Display conversion result in the UI
-    resultDiv.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
-  } catch {
-    // Handle errors gracefully (e.g., API failure, invalid input)
-    resultDiv.textContent = "Error fetching conversion rates.";
-  }
-});
-
-// Mobile navigation toggle
+// Mobile navigation toggle (runs on all pages)
 const hamburger = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
-
 if (hamburger) {
   hamburger.addEventListener("click", () => {
     navLinks.classList.toggle("active");
   });
 }
 
-// Initialize the news section (fetches headlines from NewsData.io API)
+// Initialize features (these should be safe; check their internal guards if they access page-specific DOM)
 loadNews();
-
-// Initialize the contact form (adds confirmation message after submission)
 initContactForm();
-
-// Restore last selected currencies on page load
-restoreCurrencySelection();

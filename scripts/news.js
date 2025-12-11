@@ -10,10 +10,12 @@ export async function loadNews() {
     const data = await res.json();
 
     const newsList = document.getElementById("news-list");
+    if (!newsList) return; // guard: do nothing when element is missing
+
     newsList.innerHTML = "";
 
     // Display top 5 articles
-    data.results.slice(0, 5).forEach(article => {
+    (data.results || []).slice(0, 5).forEach(article => {
       const li = document.createElement("li");
       li.innerHTML = `
         <a href="${article.link}" target="_blank">${article.title}</a>
@@ -22,8 +24,11 @@ export async function loadNews() {
       newsList.appendChild(li);
     });
   } catch (error) {
-    // Show fallback message if API fails
-    document.getElementById("news-list").innerHTML =
-      "<li>Error loading news. Please try again later.</li>";
+    const newsList = document.getElementById("news-list");
+    if (newsList) {
+      newsList.innerHTML = "<li>Error loading news. Please try again later.</li>";
+    } else {
+      console.error("loadNews failed:", error);
+    }
   }
 }

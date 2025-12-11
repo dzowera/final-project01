@@ -83,8 +83,10 @@ body {
 /* Hero Section */
 .hero {
   height: 70vh;
-  background: linear-gradient(rgba(30,58,138,0.8), rgba(30,58,138,0.8)),
-              url('../assets/hero-bg.jpg') center/cover no-repeat;
+  /* removed image URL — using gradient / solid color only */
+  background: linear-gradient(rgba(30,58,138,0.9), rgba(30,58,138,0.9));
+  /* fallback color */
+  background-color: #1E3A8A;
   display: flex;
   justify-content: center;
   align-items: center;
