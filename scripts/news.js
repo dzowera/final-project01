@@ -5,7 +5,7 @@ export async function loadNews() {
   try {
     // Call NewsData.io Market API with your public key
     const res = await fetch(
-      "https://newsdata.io/api/1/market?apikey=pub_e3b16449b1e0497d8f1266523a064384&q=finance"
+      `https://newsdata.io/api/1/latest?apikey=pub_e3b16449b1e0497d8f1266523a064384&country=mw,za,gb,us,sa&language=en&category=business,politics,technology,world&timezone=africa/harare&removeduplicate=1`
     );
     const data = await res.json();
 
